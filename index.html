@@ -13,52 +13,48 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header class="head_bar">
-      <h1 class="head_bar__title">Bookshelf Apps</h1>
+    <header class="sticky top-0 w-full px-3 py-4 bg-white shadow-md">
+      <div class="container mx-auto max-w-3xl">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-xl font-bold text-slate-950">Bookshelf Apps</h1>
+          </div>
+          <div class="text-right">
+            <ul class="flex gap-3">
+              <li class="inline">
+                <a href="/" class="py-2 px-4 text-sky-500">Beranda</a>
+              </li>
+              <li class="inline text-neutral-400 hover:text-sky-500">
+                <a href="/add.html">Tambah Buku</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </header>
-    <main>
-      <section class="input_section">
-        <h2>Masukkan Buku Baru</h2>
-        <form id="inputBook">
-          <div class="input">
-            <label for="inputBookTitle">Judul</label>
-            <input id="inputBookTitle" type="text" required />
-          </div>
-          <div class="input">
-            <label for="inputBookAuthor">Penulis</label>
-            <input id="inputBookAuthor" type="text" required />
-          </div>
-          <div class="input">
-            <label for="inputBookYear">Tahun</label>
-            <input id="inputBookYear" type="number" required />
-          </div>
-          <div class="input_inline">
-            <label for="inputBookIsComplete">Selesai dibaca</label>
-            <input id="inputBookIsComplete" type="checkbox" />
-          </div>
-          <button id="bookSubmit" type="submit">
-            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
-          </button>
-        </form>
-      </section>
-
+    <main class="flex flex-col gap-6">
       <section class="search_section">
-        <h2>Cari Buku (Opsional)</h2>
         <form id="searchBook">
           <label for="searchBookTitle">Judul</label>
-          <input id="searchBookTitle" type="text" />
+          <input
+            id="searchBookTitle"
+            type="text"
+            class="border border-neutral-300"
+          />
           <button id="searchSubmit" type="submit">Cari</button>
         </form>
       </section>
 
-      <section class="book_shelf">
-        <h2>Belum selesai dibaca</h2>
+      <section class="border border-neutral-500 rounded-md">
+        <div class="w-full px-6 py-3 bg-neutral-500 text-white">
+          <h2>😅&nbsp;Belum selesai dibaca</h2>
+        </div>
 
-        <div id="incompleteBookshelfList" class="book_list">
+        <div id="incompleteBookshelfList" class="book_list px-6 py-3">
           <!--      <article class="book_item">-->
           <!--        <h3>Book Title</h3>-->
           <!--        <p>Penulis: John Doe</p>-->
@@ -72,10 +68,12 @@
         </div>
       </section>
 
-      <section class="book_shelf">
-        <h2>Selesai dibaca</h2>
+      <section class="border border-green-500 rounded-md">
+        <div class="w-full px-6 py-3 bg-green-500 text-white">
+          <h2>😃&nbsp;Selesai dibaca</h2>
+        </div>
 
-        <div id="completeBookshelfList" class="book_list">
+        <div id="completeBookshelfList" class="book_list px-6 py-3">
           <!--      <article class="book_item">-->
           <!--        <h3>Book Title</h3>-->
           <!--        <p>Penulis: John Doe</p>-->
@@ -90,6 +88,6 @@
       </section>
     </main>
 
-    <script src="main.js"></script>
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>
