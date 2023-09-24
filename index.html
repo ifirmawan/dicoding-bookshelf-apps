@@ -13,7 +13,10 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://iwanfirmawan.my.id/dicoding-bookshelf-apps/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://iwanfirmawan.my.id/dicoding-bookshelf-apps/assets/css/style.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -38,11 +41,12 @@
     </header>
     <main class="flex flex-col gap-6">
       <section class="search_section">
-        <form id="searchBook">
+        <form id="searchBook" method="get">
           <label for="searchBookTitle">Judul</label>
           <input
             id="searchBookTitle"
             type="text"
+            name="search"
             class="border border-neutral-300"
           />
           <button id="searchSubmit" type="submit">Cari</button>
@@ -54,17 +58,8 @@
           <h2>😅&nbsp;Belum selesai dibaca</h2>
         </div>
 
-        <div id="incompleteBookshelfList" class="book_list px-6 py-3">
-          <!--      <article class="book_item">-->
-          <!--        <h3>Book Title</h3>-->
-          <!--        <p>Penulis: John Doe</p>-->
-          <!--        <p>Tahun: 2002</p>-->
-          <!--    -->
-          <!--        <div class="action">-->
-          <!--          <button class="green">Selesai dibaca</button>-->
-          <!--          <button class="red">Hapus buku</button>-->
-          <!--        </div>-->
-          <!--      </article>-->
+        <div class="book_list px-6 py-3">
+          <ul id="incompleteBookshelfList" class="flex flex-col gap-3"></ul>
         </div>
       </section>
 
@@ -73,19 +68,82 @@
           <h2>😃&nbsp;Selesai dibaca</h2>
         </div>
 
-        <div id="completeBookshelfList" class="book_list px-6 py-3">
-          <!--      <article class="book_item">-->
-          <!--        <h3>Book Title</h3>-->
-          <!--        <p>Penulis: John Doe</p>-->
-          <!--        <p>Tahun: 2002</p>-->
-          <!--        -->
-          <!--        <div class="action">-->
-          <!--          <button class="green">Belum selesai di Baca</button>-->
-          <!--          <button class="red">Hapus buku</button>-->
-          <!--        </div>-->
-          <!--      </article>-->
+        <div class="book_list px-6 py-3">
+          <ul id="completeBookshelfList" class="flex flex-col gap-3"></ul>
         </div>
       </section>
+
+      <!-- START TEMPLATES -->
+
+      <template id="temp-unread">
+        <article class="book_item shadow-md">
+          <div class="p-3 border-l-4 border-neutral-500">
+            <h3 class="font-bold">{{title}}</h3>
+            <p>
+              <span class="font-semibold">Penulis:&nbsp;</span
+              ><span id="author"></span>
+            </p>
+            <p>
+              <span class="font-semibold">Tahun:&nbsp;</span
+              ><span id="year"></span>
+            </p>
+          </div>
+          <div class="bg-neutral-100">
+            <div class="flex justify-between items-center px-3 py-2">
+              <button
+                class="book-checklist px-4 py-2 hover:bg-neutral-200"
+                onclick="handleOnChecklist(this)"
+                data-id="{{book_id}}"
+              >
+                ✅&nbsp;Selesai dibaca
+              </button>
+              <button
+                class="book-remove px-4 py-2 hover:bg-neutral-200"
+                onclick="handleOnRemove(this)"
+                data-id="{{book_id}}"
+              >
+                ❌&nbsp;Hapus buku
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+
+      <template id="temp-read">
+        <article class="book_item shadow-md">
+          <div class="p-3 border-l-4 border-green-500">
+            <h3 class="font-bold">{{title}}</h3>
+            <p>
+              <span class="font-semibold">Penulis:&nbsp;</span
+              ><span id="author"></span>
+            </p>
+            <p>
+              <span class="font-semibold">Tahun:&nbsp;</span
+              ><span id="year"></span>
+            </p>
+          </div>
+          <div class="bg-neutral-100">
+            <div class="flex justify-between items-center px-3 py-2">
+              <button
+                class="book-unread px-4 py-2 hover:bg-neutral-200"
+                onclick="handleOnUnread(this)"
+                data-id="{{book_id}}"
+              >
+                🙏🏻&nbsp;Belum selesai dibaca
+              </button>
+              <button
+                class="book-remove px-4 py-2 hover:bg-neutral-200"
+                onclick="handleOnRemove(this)"
+                data-id="{{book_id}}"
+              >
+                ❌&nbsp;Hapus buku
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+
+      <!-- END TEMPLATES -->
     </main>
 
     <script src="https://iwanfirmawan.my.id/dicoding-bookshelf-apps/assets/js/main.js"></script>
