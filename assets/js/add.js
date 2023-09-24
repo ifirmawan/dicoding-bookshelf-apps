@@ -25,6 +25,6 @@ addForm.addEventListener("submit", (e) => {
   }
   if (books) {
     localStorage.setItem("MyBooks", JSON.stringify(books));
-    window.location.href = "/";
+    window.location.href = "/dicoding-bookshelf-apps/";
   }
 });
